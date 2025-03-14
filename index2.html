@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="images/favicon.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ DO SEXOOOOOOOOO</title>
+    <!-- CSS externo -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.25rem;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #fce4ec;
+            color: #333;
+            background-image: url(Untitled\ design\ \(20\).png);
+            
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        section {
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+            margin-bottom: 0.625rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.75rem;
+            margin: 1rem;
+            margin-top: 2.5rem;
+            background-color: #eea1e3;
+            color:#363232;
+            border-radius: 10px;
+            width: 190px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .centro {
+            text-align: center;
+        }
+
+        .questao {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ajusta a distância entre o número e o texto */
+}
+
+
+        #numQuestao {
+            display: block;
+            background: #f4b5eb;
+            padding: 4px 10px 2px 10px;
+            border-radius: 50%;
+            color: #565656;
+        }
+
+        #pergunta {
+            margin-left: 1rem;
+            color: #f4b5eb;
+        }
+
+        .questoes {
+            padding: 1.5rem;
+            border: 1px solid rgb(58, 0, 39);
+            border-radius: 15px;
+            margin-bottom: 0.5rem;
+            background-color: #363232;
+        }
+
+        .questoes ol li {
+            display: block;
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            /* background-color: #f4b5eb; */
+            background-color: #f4b5eb;
+            color: black;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid rgb(58, 0, 39);
+        }
+
+        .questoes ol li:hover {
+            background-color: #eea1e3;
+        }
+
+        .bloqueado {
+            display: none;
+        }
+
+        .bloqueado li:hover {
+            display: none;
+        }
+
+        #instrucoes {
+            background-color: #eea1e3;
+            color: #333;
+            padding: 0.625rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        #aviso {
+            color: #333;
+            background-color: #eea1e3;
+            width: 230px;
+            text-align: center;
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        /* ANIMAÇÃO */
+
+        @keyframes piscar {
+            0% {
+                filter: drop-shadow(0 0 15px #ff1493);
+                -webkit-filter: drop-shadow(0 0 15px #ff1493);
+                -moz-filter: drop-shadow(0 0 15px #ff1493);
+                -o-filter: drop-shadow(0 0 15px #ff1493);
+                -ms-filter: drop-shadow(0 0 15px #ff1493);
+            }
+            100% {
+            }
+        }
+
+        .animar {
+            animation: piscar .75s infinite alternate;
+        }
+
+        .aparecer {
+            animation: aparecer .5s infinite alternate;
+        }
+
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gif-esquerdo {
+            width: 230px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .gif-direito {
+            width: 100px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+        }
+
+        #reiniciar {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #eea1e3;
+            color:#333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .correto {
+    background-color: #4CAF50 !important; /* Verde */
+    color: white;
+}
+
+.errado {
+    background-color: #FF6347 !important; /* Vermelho */
+    color: white;
+}
+
+        
+        #mensagem {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        #divTeddy{
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="tela-principal">
+
+        <section class='conteudos'>
+
+            <h1 id="nomeQuiz">QUIZ DO SEXOOOO</h1>
+
+            <article class='centro' id='instrucoes'>
+                Se errar 4 vezes o teddy explode HAHAHAHAHA
+            </article>
+
+            <article class='questoes'>
+                
+                <header class='questao'>
+                    <span id='numQuestao'></span>
+                    <h2 id='pergunta'></h2>
+                </header>
+
+                <div class='corpo'>
+                    <ol type='A' id='alternativas'>
+                        <li id='a' class='respostas' onclick='verificarSeAcertou(numQuestao.textContent, this)'></li>
+                        <li id='b' class='respostas' onclick='verificarSeAcertou(numQuestao.textContent, this)'></li>
+                        <li id='c' class='respostas' onclick='verificarSeAcertou(numQuestao.textContent, this)'></li>
+
+                    </ol>
+                </div>
+            </article>
+            <div id="divTeddy">
+                <img id="teddyImg" src="teddy1.png" alt="Teddy" class="gif-esquerdo">
+            </div>
+            <article id='aviso'>Questão <span id='numero'></span> de <span id='total'></span></article>
+            <button id="reiniciar" class="oculto" onclick="reiniciarQuiz()">Reiniciar</button>
+            <p id="mensagem"></p>
+            
+            <!-- <div class="gif-container">
+                
+            </div> -->
+            
+        </section>
+        
+    </main>
+    
+    <script>
+        let titulo = document.querySelector('h1')
+        let instrucoes = document.querySelector('#instrucoes')
+        let aviso = document.querySelector('#aviso')
+        let erros = 0 // contador de erros
+
+        let numQuestao = document.querySelector('#numQuestao')
+        let pergunta   = document.querySelector('#pergunta')
+
+        let a = document.querySelector('#a')
+        let b = document.querySelector('#b')
+        let c = document.querySelector('#c')
+
+        let articleQuestoes = document.querySelector('.questoes')
+        let alternativas = document.querySelector('#alternativas')
+        let teddyImg = document.querySelector('#teddyImg')
+
+        const q0 = { numQuestao: 0, pergunta: "Pergunta", alternativaA: "Alternativa A", alternativaB: "Alternativa B", alternativaC: "Alternativa C", correta: "0" }
+
+        const q1 = { numQuestao: 1, pergunta: "A gente se viu pela primeira vez no dia:", alternativaA: "12 de janeiro", alternativaB: "10 de janeiro", alternativaC: "11 de janeiro", correta: "11 de janeiro" }
+        const q2 = { numQuestao: 2, pergunta: "Quantas vezes a gente se viu até hoje?", alternativaA: "20", alternativaB: "24", alternativaC: "23", correta: "23" }
+        const q3 = { numQuestao: 3, pergunta: "Qual é o meu desenho favorito", alternativaA: "OIMDG", alternativaB: "Charlie e Rola", alternativaC: "Backyardigans", correta: "OIMDG" }
+        const q4 = { numQuestao: 4, pergunta: "Qual é a raça do meu dog", alternativaA: "ShihTzu", alternativaB: "Maltes", alternativaC: "Lhasa Apso", correta: "Lhasa Apso" }
+        const q5 = { numQuestao: 5, pergunta: "Quais meus times", alternativaA: "Corinthians, Barcelona e Ferrari", alternativaB: "Corinthians, Real Madrid e Mercedes", alternativaC: "Corinthians, Manchester city e Ferrari", correta: "Corinthians, Barcelona e Ferrari" }
+        const q6 = { numQuestao: 6, pergunta: "Qual meu cantor fav", alternativaA: "Joji", alternativaB: "J. Eskine, o Gangster do Arrocha", alternativaC: "Rex Orange County", correta: "Rex Orange County" }
+        const q7 = { numQuestao: 7, pergunta: "Qual o primeiro trequinho q eu dei pra vc", alternativaA: "Copo do esnupi", alternativaB: "Lobinho", alternativaC: "Kuromi bugada", correta: "Lobinho" }
+        const q8 = { numQuestao: 8, pergunta: "QUE DIA QUE NOIS COMEÇO A CONVERSA", alternativaA: "2 de janeiro", alternativaB: "3 de janeiro", alternativaC: "4 de janeiro", correta: "2 de janeiro" }
+        const q9 = { numQuestao: 9, pergunta: "Complete a frase: C'est", alternativaA: "on da vi' onça", alternativaB: "on dav' ionça", alternativaC: "son d'avion ça", correta: "son d'avion ça" }
+        const q10 = { numQuestao: 10, pergunta: "Resolva a seguinte integral definida: ∫(0 até π/2) (sen(x) + cos(x))^2 dx", alternativaA: "π/4", alternativaB: "1", alternativaC: "2", correta: "2" }
+        const questoes = [q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+
+        let numero = document.querySelector('#numero')
+        let total  = document.querySelector('#total')
+        let acertos = 0;
+
+        numero.textContent = q1.numQuestao
+        let totalDeQuestoes = (questoes.length) - 1
+        total.textContent = totalDeQuestoes
+
+        // MONTAR A 1a QUESTAO COMPLETA
+        numQuestao.textContent = q1.numQuestao
+        pergunta.textContent   = q1.pergunta
+        a.textContent = q1.alternativaA
+        b.textContent = q1.alternativaB
+        c.textContent = q1.alternativaC
+
+        a.setAttribute('value', '1A')
+        b.setAttribute('value', '1B')
+        c.setAttribute('value', '1C')
+
+        function proximaQuestao(nQuestao) {
+            numero.textContent = nQuestao
+            numQuestao.textContent = questoes[nQuestao].numQuestao
+            pergunta.textContent   = questoes[nQuestao].pergunta
+            a.textContent = questoes[nQuestao].alternativaA
+            b.textContent = questoes[nQuestao].alternativaB
+            c.textContent = questoes[nQuestao].alternativaC
+            a.setAttribute('value', nQuestao+'A')
+            b.setAttribute('value', nQuestao+'B')
+            c.setAttribute('value', nQuestao+'C')
+        }
+
+        function bloquearAlternativas() {
+            a.classList.add('bloqueado')
+            b.classList.add('bloqueado')
+            c.classList.add('bloqueado')
+        }
+
+        function desbloquearAlternativas() {
+            a.classList.remove('bloqueado')
+            b.classList.remove('bloqueado')
+            c.classList.remove('bloqueado')
+        }
+
+        function verificarSeAcertou(nQuestao, resposta) {
+    let respostaEscolhida = resposta.textContent;
+    let certa = questoes[nQuestao].correta;
+
+    console.log(`Questão: ${nQuestao}, Escolhida: ${respostaEscolhida}, Correta: ${certa}`);
+
+    if (respostaEscolhida === certa) {
+        resposta.classList.add('correto'); // Aplica a classe verde
+        acertos += 1; // Incrementa o número de acertos
+    } else {
+        resposta.classList.add('errado'); // Aplica a classe vermelha
+        erros += 1;
+        if (erros >= 4) {
+            fimDoJogo();
+            return;
+        }
+        teddyImg.src = `teddy${erros + 1}.png`; 
+    }
+
+    bloquearAlternativas();
+
+    setTimeout(function() {
+        resposta.classList.remove('correto', 'errado');
+        let proxima = Number(nQuestao) + 1;
+        if (proxima > totalDeQuestoes) {
+            fimDoJogo();
+        } else {
+            proximaQuestao(proxima);
+        }
+        desbloquearAlternativas();
+    }, 1000);
+}
+
+function reiniciarQuiz() {
+    erros = 0;
+    acertos = 0;
+    teddyImg.src = "teddy1.png"; // Volta para a imagem inicial do Teddy
+    alternativas.style.display = "block"; // Mostra as alternativas novamente
+    document.querySelector("#reiniciar").style.display = "none"; // Esconde o botão de reiniciar
+
+    // Remove as cores das respostas anteriores
+    let opcoes = document.querySelectorAll(".respostas");
+    opcoes.forEach(opcao => {
+        opcao.classList.remove("correto", "errado");
+    });
+
+    // Reinicia o quiz para a primeira questão
+    proximaQuestao(1);
+}
+
+
+
+
+
+function fimDoJogo() {
+    numQuestao.textContent = "";
+    alternativas.style.display = "none"; // Esconde as alternativas
+    document.querySelector("#reiniciar").style.display = "block"; // Mostra o botão de reiniciar
+    document.querySelector("#instrucoes").style.display = "none";
+
+
+    if (erros >= 4) {
+        pergunta.textContent = "Parabéns vc deixou o teddy MORRER";
+        teddyImg.src = "teddy5.png"
+    } else {
+        pergunta.textContent = `meus parabes vc nao deixou o teddy morrer e acertou ${acertos} de ${totalDeQuestoes} perguntas! grande MERDA`;
+    }
+}
+
+    </script>
+</body>
+</html>
